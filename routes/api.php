@@ -19,13 +19,38 @@ use Illuminate\Http\Request;
 
 
 
-Route::group(['prefix' => 'v1'], function () {
+/*Route::group(['prefix' => 'v1'], function () {
     Route::resource('user', 'UserController',
         ['only' => ['index', 'store', 'update', 'destroy', 'show']]);
 });
-
-/*Route::group(['prefix' => 'v2'], function () {
+*/
+Route::group(['prefix' => 'v2'], function () {
     Route::resource('user', 'UserController',
         ['only' => ['index', 'store', 'update', 'destroy', 'show']]);
     Route::get('users/names', 'UserController@names');
-});*/
+});
+
+Route::group(['prefix' => 'v3'], function () {
+    route::get('upper/{word}', function ($word){
+        return ['original'=> $word, 'upper'=> strtoupper($word)];
+    });
+
+});
+
+//TOKEN AUTH
+
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['middleware'=> 'auth:api'], function (){
+        route::get('upper/{word}', function ($word){
+            return ['originalxxx'=> $word, 'upper'=> strtoupper($word)];
+        });
+    });
+});
+
+
+
+Route::group(['prefix' => 'v4'], function () {
+    Route::group(['middleware'=> 'auth:api'], function (){
+        Route::get('users/names', 'UserController@names');
+    });
+});
