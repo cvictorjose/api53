@@ -42,11 +42,11 @@
                     </div>
                 </div>
                 <div>
-                    <a class="btn btn-prepend btn-launch-video" href="#">
-                        <i class="prepended icon-append-play"></i>Watch Video
+                    <a class="btn btn-prepend btn-launch-video" href="{{ url('/login') }}">
+                        <i class="prepended icon-append-play"></i>Login
                     </a>
-                    <a class="btn btn-prepend" href="#">
-                        <i class="prepended icon-append-iphone"></i>Learn More
+                    <a class="btn btn-prepend" href="{{ url('/register') }}">
+                        <i class="prepended icon-append-iphone"></i>Register
                     </a>
                 </div>
             </div>

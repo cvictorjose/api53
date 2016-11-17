@@ -14,9 +14,19 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
-    }
 
+        /*$userlist                 =   User::all();
+        $data['userlist']       =   $userlist;
+        return $data;
+        return response()->json(['status'=>'ok','items'=>User::all()], 200);*/
+
+
+        header('content-Type: application/Json');
+        $data =  User::all();
+        // $data =  Array("Saab", "Volvo", "BMW");
+
+        return response()->json($data);
+    }
     /**
      * Show the form for creating a new resource.
      *
